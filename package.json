@@ -1,0 +1,49 @@
+{
+  "name": "jcoll",
+  "version": "0.0.2",
+  "description": "Java-inspired utilities for JS collections",
+  "homepage": "https://github.com/katrox5/jcoll#readme",
+  "bugs": {
+    "url": "https://github.com/katrox5/jcoll/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katrox5/jcoll.git"
+  },
+  "license": "MIT",
+  "author": "katrox5",
+  "type": "module",
+  "main": "index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rimraf ./dist && tsc",
+    "setup": "npm install && npx npm-install-peers",
+    "test": "jest",
+    "watch": "jest --watchAll"
+  },
+  "keywords": [
+    "jcoll",
+    "utils",
+    "utilities",
+    "collection",
+    "prototype",
+    "function"
+  ],
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.15.2",
+    "jest": "^29.7.0",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.3.2",
+    "typescript": "^5.8.3"
+  }
+}
