@@ -35,7 +35,7 @@ if (!Array.prototype.mapToNumber) {
 if (!Array.prototype.takeWhile) {
   Array.prototype.takeWhile = function <T>(predicate: (item: T) => boolean): Array<T> {
     const index = this.findIndex((item) => !predicate(item))
-    return this.slice(0, index)
+    return index === -1 ? [...this] : this.slice(0, index)
   }
 }
 
