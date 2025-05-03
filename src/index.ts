@@ -163,7 +163,7 @@ declare global {
       valueMapper: (item: T) => V,
     ): Collector<T, Map<K, V>, Map<K, V>>
     /** Creates collector that builds plain Object */
-    toObject<T, K extends string | number | symbol, V>(
+    toObject<T, K extends PropertyKey, V>(
       keyMapper: (item: T) => K,
       valueMapper: (item: T) => V,
     ): Collector<T, Record<K, V>, Record<K, V>>

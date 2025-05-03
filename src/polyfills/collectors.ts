@@ -16,7 +16,7 @@ export const Collectors: Collectors = {
     }
   },
 
-  toObject<T, K extends string | number | symbol, V>(
+  toObject<T, K extends PropertyKey, V>(
     keyMapper: (item: T) => K,
     valueMapper: (item: T) => V,
   ): Collector<T, Record<K, V>, Record<K, V>> {
@@ -125,11 +125,8 @@ export const Collectors: Collectors = {
     finisher: (result: R) => D,
   ): Collector<T, A, D> {
     return {
-      supplier: collector.supplier,
-      accumulator: collector.accumulator,
-      finisher: (acc: A) => {
-        return finisher(collector.finisher ? collector.finisher(acc) : (acc as unknown as R))
-      },
+      ...collector,
+      finisher: (acc) => finisher(collector.finisher?.(acc) ?? (acc as unknown as R)),
     }
   },
 }

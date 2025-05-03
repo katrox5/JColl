@@ -1,6 +1,6 @@
 # JColl [![npm version](https://img.shields.io/npm/v/jcoll)](https://www.npmjs.com/package/jcoll) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-> Java-inspired utilities for JS collections.  
+> Java-inspired Collection Utilities for Modern JavaScript/TypeScript.
 > Augment native `Map`, `Set`, and `Array` prototypes with chainable operations inspired by Java Stream API.
 
 ## Why JColl?
