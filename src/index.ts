@@ -52,18 +52,12 @@ declare global {
      * Adds all elements from iterable to the set
      * @param iter - Iterable collection of elements to add
      */
-    addAll(iter: Iterable<T>): void
+    addAll(iter: Iterable<T>): Set<T>
     /**
      * Removes all elements from iterable from the set
      * @param iter - Iterable collection of elements to remove
      */
-    deleteAll(iter: Iterable<T>): void
-    /**
-     * Tests whether all elements from iterable exist in the set
-     * @param iter - Iterable collection to check
-     * @returns True if all elements exist, false otherwise
-     */
-    hasAll(iter: Iterable<T>): boolean
+    deleteAll(iter: Iterable<T>): Set<T>
   }
 
   interface Array<T> {

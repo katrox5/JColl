@@ -116,13 +116,6 @@ describe('Set extensions', () => {
       expect(set.has(2)).toBe(true)
     })
   })
-
-  describe('hasAll', () => {
-    it('should check if all elements exist', () => {
-      expect(set.hasAll([1, 2])).toBe(true)
-      expect(set.hasAll([1, 4])).toBe(false)
-    })
-  })
 })
 
 describe('Array extensions', () => {
