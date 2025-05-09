@@ -34,10 +34,17 @@ declare global {
      */
     setIfAbsent(key: K, value: V): V
     /**
+     * Removes all entries with keys in the iterable
+     * @param keys - Iterable collection of keys to remove
+     * @returns Map of removed entries
+     */
+    deleteAll(keys: Iterable<K>): Map<K, V>
+    /**
      * Copies all entries from another map into this one
      * @param m - Source map containing entries to add
+     * @returns The map itself
      */
-    setAll(m: Map<K, V>): void
+    setAll(m: Map<K, V>): Map<K, V>
     /**
      * Checks if value exists in the map
      * @param value - Value to search for
@@ -51,11 +58,13 @@ declare global {
     /**
      * Adds all elements from iterable to the set
      * @param iter - Iterable collection of elements to add
+     * @returns The set itself
      */
     addAll(iter: Iterable<T>): Set<T>
     /**
      * Removes all elements from iterable from the set
      * @param iter - Iterable collection of elements to remove
+     * @returns Set of removed elements
      */
     deleteAll(iter: Iterable<T>): Set<T>
   }
@@ -114,6 +123,11 @@ declare global {
      * @returns Average value
      */
     average(this: Array<number>): number
+    /**
+     * Returns a frozen copy of the array
+     * @returns A new frozen array
+     */
+    toFrozen(): ReadonlyArray<T>
   }
 
   type NumberKey<T> = {

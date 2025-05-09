@@ -81,4 +81,10 @@ if (!Array.prototype.average) {
   }
 }
 
+if (!Array.prototype.toFrozen) {
+  Array.prototype.toFrozen = function <T>(this: Array<T>): ReadonlyArray<T> {
+    return Object.freeze([...this])
+  }
+}
+
 export {}
