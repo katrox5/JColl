@@ -1,6 +1,6 @@
 {
   "name": "jcoll",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Java-inspired utilities for JS collections",
   "homepage": "https://github.com/katrox5/jcoll#readme",
   "bugs": {

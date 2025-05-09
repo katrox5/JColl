@@ -51,10 +51,11 @@ if (!Map.prototype.setIfAbsent) {
 }
 
 if (!Map.prototype.setAll) {
-  Map.prototype.setAll = function <K, V>(this: Map<K, V>, m: Map<K, V>): void {
+  Map.prototype.setAll = function <K, V>(this: Map<K, V>, m: Map<K, V>): Map<K, V> {
     for (const [key, value] of m) {
       this.set(key, value)
     }
+    return this
   }
 }
 

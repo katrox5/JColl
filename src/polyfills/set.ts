@@ -9,10 +9,13 @@ if (!Set.prototype.addAll) {
 
 if (!Set.prototype.deleteAll) {
   Set.prototype.deleteAll = function <T>(this: Set<T>, iter: Iterable<T>): Set<T> {
+    const removed = new Set<T>()
     for (const value of iter) {
-      this.delete(value)
+      if (this.delete(value)) {
+        removed.add(value)
+      }
     }
-    return this
+    return removed
   }
 }
 
