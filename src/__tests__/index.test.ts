@@ -73,10 +73,29 @@ describe('Map extensions', () => {
         ['b', 20],
         ['c', 3],
       ])
-      map.setAll(other)
+      let map1 = map.setAll(other)
       expect(map.size).toBe(3)
       expect(map.get('b')).toBe(20)
       expect(map.get('c')).toBe(3)
+      expect(map1).toBe(map)
+    })
+  })
+
+  describe('deleteAll', () => {
+    it('should delete all entries from iterable', () => {
+      let map1 = map.deleteAll(['a', 'b'])
+      expect(map.size).toBe(0)
+      expect(map1.size).toBe(2)
+      expect(map1.get('a')).toBe(1)
+      expect(map1.get('b')).toBe(2)
+    })
+
+    it('should not delete non-existing entries', () => {
+      let map1 = map.deleteAll(['d', 'e'])
+      expect(map.size).toBe(2)
+      expect(map.get('a')).toBe(1)
+      expect(map.get('b')).toBe(2)
+      expect(map1.size).toBe(0)
     })
   })
 
@@ -102,18 +121,22 @@ describe('Set extensions', () => {
 
   describe('addAll', () => {
     it('should add all elements from iterable', () => {
-      set.addAll([4, 5])
+      let set1 = set.addAll([4, 5])
       expect(set.size).toBe(5)
       expect(set.has(4)).toBe(true)
       expect(set.has(5)).toBe(true)
+      expect(set1).toBe(set)
     })
   })
 
   describe('deleteAll', () => {
     it('should delete all elements from iterable', () => {
-      set.deleteAll([1, 3])
+      let set1 = set.deleteAll([1, 3, 4])
       expect(set.size).toBe(1)
       expect(set.has(2)).toBe(true)
+      expect(set1.size).toBe(2)
+      expect(set1.has(1)).toBe(true)
+      expect(set1.has(3)).toBe(true)
     })
   })
 })
@@ -290,6 +313,21 @@ describe('Array extensions', () => {
           testData.collect(Collectors.summarizing('name' as any))
         }).toThrow()
       })
+    })
+  })
+
+  describe('toFrozen', () => {
+    it('should convert array to frozen array', () => {
+      const arr = [1, 2, 3].toFrozen()
+      expect(Object.isFrozen(arr)).toBe(true)
+      expect(arr).toEqual([1, 2, 3])
+    })
+
+    it('should throw error when trying to modify frozen array', () => {
+      const arr = [1, 2, 3].toFrozen()
+      expect(() => {
+        ;(arr as any)[0] = 10
+      }).toThrow()
     })
   })
 })
