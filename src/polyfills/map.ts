@@ -50,6 +50,19 @@ if (!Map.prototype.setIfAbsent) {
   }
 }
 
+if (!Map.prototype.deleteAll) {
+  Map.prototype.deleteAll = function <K, V>(this: Map<K, V>, keys: Iterable<K>): Map<K, V> {
+    const removed = new Map<K, V>()
+    for (const key of keys) {
+      if (this.has(key)) {
+        removed.set(key, this.get(key)!)
+        this.delete(key)
+      }
+    }
+    return removed
+  }
+}
+
 if (!Map.prototype.setAll) {
   Map.prototype.setAll = function <K, V>(this: Map<K, V>, m: Map<K, V>): Map<K, V> {
     for (const [key, value] of m) {
